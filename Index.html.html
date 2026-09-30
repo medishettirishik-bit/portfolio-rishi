@@ -1,0 +1,721 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rishi | Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0f19;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00e5ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00e5ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0,229,255,0.12), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(124,58,237,0.15), transparent 30%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeUp 1s ease;
+        }
+
+        .profile-circle {
+            width: 145px;
+            height: 145px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00e5ff, #7c3aed);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 55px;
+            font-weight: bold;
+            box-shadow: 0 0 50px rgba(0,229,255,0.25);
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 75px);
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #00e5ff;
+        }
+
+        .hero h2 {
+            font-size: clamp(18px, 4vw, 28px);
+            color: #b9c0cc;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #9ca3af;
+            max-width: 650px;
+            margin: auto;
+            font-size: 17px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #00e5ff;
+            color: #071018;
+        }
+
+        .secondary {
+            border: 1px solid #00e5ff;
+            color: #00e5ff;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,229,255,0.2);
+        }
+
+        /* GENERAL */
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+        }
+
+        .section-title span {
+            color: #00e5ff;
+        }
+
+        .section-title p {
+            color: #8f98a8;
+            margin-top: 8px;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: #aeb6c4;
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            background: #111827;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item strong {
+            color: #00e5ff;
+        }
+
+        .info-item span {
+            color: #c2c8d1;
+            text-align: right;
+        }
+
+        /* EDUCATION */
+        .timeline {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timeline-card {
+            background: #111827;
+            padding: 25px;
+            border-radius: 18px;
+            border-left: 4px solid #00e5ff;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(8px);
+        }
+
+        .timeline-card h3 {
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .timeline-card p {
+            color: #9ca3af;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #111827;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: #00e5ff;
+        }
+
+        .skill-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* HOBBIES */
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .interest-card {
+            background: #111827;
+            padding: 30px 15px;
+            text-align: center;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .interest-card:hover {
+            transform: scale(1.04);
+            background: #151e2e;
+        }
+
+        .interest-card .emoji {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+            background: #111827;
+            padding: 45px 25px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-box p {
+            color: #aeb6c4;
+            margin: 15px 0 25px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #7f8898;
+        }
+
+        footer span {
+            color: #00e5ff;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            .nav-container {
+                padding: 15px 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .interest-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            section {
+                padding: 70px 18px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interest-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .profile-circle {
+                width: 120px;
+                height: 120px;
+                font-size: 45px;
+            }
+
+            .info-item {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .info-item span {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">RISHI.</div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- HOME -->
+    <header class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="profile-circle">
+                <img src="">R
+            </div>
+
+            <h1>Hi, I'm <span>Rishi</span></h1>
+
+            <h2>Student • Developer • Creative Thinker</h2>
+
+            <p>
+                Welcome to my personal portfolio. I am a college student
+                interested in technology, programming, creativity and
+                building useful digital experiences.
+            </p>
+
+            <div class="buttons">
+                <a href="#about" class="btn primary">Explore My Profile</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <h2>About <span>Me</span></h2>
+            <p>A little information about me</p>
+        </div>
+
+        <div class="about">
+
+            <div class="about-text">
+
+                <h3>I'm Rishi 👋</h3>
+
+                <p>
+                    I am a college student passionate about technology,
+                    programming and creative digital projects.
+                </p>
+
+                <p>
+                    I enjoy learning new technologies and turning ideas
+                    into practical projects. My goal is to continuously
+                    improve my skills and create things that are useful,
+                    interesting and different.
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <div class="info-item">
+                    <strong>Name</strong>
+                    <span>Rishi</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>Profile</strong>
+                    <span>Student & Developer</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>College</strong>
+                    <span>Malla Reddy University</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>Location</strong>
+                    <span>Telangana, India</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>Education</strong>
+                    <span>Undergraduate Student</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section id="education">
+
+        <div class="section-title">
+            <h2>My <span>Education</span></h2>
+            <p>My learning journey</p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-card">
+
+                <h3>Malla Reddy University</h3>
+
+                <p>
+                    Undergraduate Student
+                </p>
+
+                <p>
+                    Currently developing knowledge in programming,
+                    computer applications and web technologies.
+                </p>
+
+            </div>
+
+            <div class="timeline-card">
+
+                <h3>Programming & Computer Skills</h3>
+
+                <p>
+                    C • Python • HTML • CSS • Microsoft Office
+                </p>
+
+                <p>
+                    Continuously learning through classes,
+                    personal projects and practical experiments.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <div class="section-title">
+            <h2>My <span>Skills</span></h2>
+            <p>Technologies and tools I am learning</p>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <h3>Python</h3>
+                <p>Programming and project development</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>C Programming</h3>
+                <p>Programming fundamentals and logic</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>HTML & CSS</h3>
+                <p>Modern responsive web design</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>MS Excel</h3>
+                <p>Spreadsheets and basic data handling</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📑</div>
+                <h3>MS PowerPoint</h3>
+                <p>Presentations and visual communication</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📝</div>
+                <h3>MS Word</h3>
+                <p>Documents and professional formatting</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOBBIES & INTERESTS -->
+    <section id="interests">
+
+        <div class="section-title">
+            <h2>Hobbies & <span>Interests</span></h2>
+            <p>Things I enjoy outside academics</p>
+        </div>
+
+        <div class="interest-grid">
+
+            <div class="interest-card">
+                <span class="emoji">💻</span>
+                <h3>Coding</h3>
+            </div>
+
+            <div class="interest-card">
+                <span class="emoji">🎮</span>
+                <h3>Gaming</h3>
+            </div>
+
+            <div class="interest-card">
+                <span class="emoji">🎬</span>
+                <h3>Movies</h3>
+            </div>
+
+            <div class="interest-card">
+                <span class="emoji">💡</span>
+                <h3>Creative Ideas</h3>
+            </div>
+
+            <div class="interest-card">
+                <span class="emoji">🌐</span>
+                <h3>Technology</h3>
+            </div>
+
+            <div class="interest-card">
+                <span class="emoji">📚</span>
+                <h3>Learning</h3>
+            </div>
+
+            <div class="interest-card">
+                <span class="emoji">🚀</span>
+                <h3>Projects</h3>
+            </div>
+
+            <div class="interest-card">
+                <span class="emoji">📱</span>
+                <h3>Digital World</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="section-title">
+            <h2>Let's <span>Connect</span></h2>
+            <p>Thanks for visiting my portfolio</p>
+        </div>
+
+        <div class="contact-box">
+
+            <h2>Have an idea?</h2>
+
+            <p>
+                I'm always interested in learning, creating and
+                exploring new technology.
+            </p>
+
+            <a href="#home" class="btn primary">
+                Back to Top ↑
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 <span>Rishi</span> • Personal Portfolio
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
